@@ -9,6 +9,7 @@ namespace Api.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { 
         }
 
-        public DbSet<Order> orders =>Set<Order>();   
+        public DbSet<Order> orders =>Set<Order>();
+        public DbSet<AppFile> files => Set<AppFile>();
     }
 }
