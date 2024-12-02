@@ -257,6 +257,39 @@ namespace Api.Controllers
 
         }
 
+        [HttpPost("change-password")]
+        public async Task<ActionResult<AuthResponseDto>> ChangePassword(ChangePasswordRequestDto request)
+        {
+          
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user is null)
+            {
+                return BadRequest(new AuthResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "User does not exist."
+                });
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+
+            if (result.Succeeded)
+            {
+                return Ok(new AuthResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Change Password Successfully"
+                });
+            }
+
+            return BadRequest(new AuthResponseDto
+            {
+                IsSuccess = false,
+                Message = result.Errors.FirstOrDefault()!.Description
+            });
+
+        }
+
         private string GenerateToken(AppUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
