@@ -12,6 +12,8 @@ namespace Api.Model
 
         public List<Order> Orders { get; set; } = [];
 
+        public List<Modeling> Modelings { get; set; } = [];
+
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
         public DateTime LastActiveDate { get; set; } = DateTime.UtcNow;

@@ -11,5 +11,6 @@ namespace Api.Data
 
         public DbSet<Order> orders =>Set<Order>();
         public DbSet<AppFile> files => Set<AppFile>();
+        public DbSet<Modeling> models => Set<Modeling>();
     }
 }
