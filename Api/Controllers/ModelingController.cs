@@ -69,7 +69,7 @@ namespace Api.Controllers
                 Description = request.Description,
                 Name = request.Name,
                 Price = request.Price,
-                Modles = request.Modles,
+                Models = request.Models,
             };
             _context.models.Add(newModel);
             await _context.SaveChangesAsync();
@@ -93,7 +93,7 @@ namespace Api.Controllers
             modeling.Category = request.Category;   
             modeling.Description = request.Description; 
             modeling.Name = request.Name;
-            modeling.Modles = request.Modles;
+            modeling.Models = request.Models;
             await _context.SaveChangesAsync();
             return NoContent();
         }

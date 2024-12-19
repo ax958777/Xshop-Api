@@ -14,7 +14,7 @@ namespace Api.Dto
 
         public decimal Price { get; set; }
 
-        public string[]? Modles { get; set; }
+        public string[]? Models { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
