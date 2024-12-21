@@ -37,7 +37,14 @@ namespace Api.Controllers
             var modeling = _context.models.Include(m => m.Owner).Where(m => m.Owner == user).OrderByDescending(m => m.UpdatedDate).Adapt<List<ModelingResponseDto>>();
             return Ok(modeling);
         }
-
+ 
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<ModelingResponseDto>>> GetAllModelings()
+        {
+           
+            var modelings = _context.models.OrderByDescending(m => m.UpdatedDate).Adapt<List<ModelingResponseDto>>();
+            return Ok(modelings);
+        }
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
