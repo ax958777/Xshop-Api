@@ -20,6 +20,8 @@ namespace Api.Controllers
         }
 
         [HttpPost("api/[controller]/upload")]
+        [RequestSizeLimit(500 * 1024 * 1024)]       //unit is bytes => 500Mb
+        [RequestFormLimits(MultipartBodyLengthLimit = 500 * 1024 * 1024)]
         public async Task<ActionResult<List<UploadResultDto>>> UploadFile(List<IFormFile> files)
         {
             List<UploadResultDto> uploadResults = new List<UploadResultDto>();
